@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import "./App.css";
 
-const API_URL = "http://localhost:5000/api";
+const API_URL = "https://smartsubmit-backend-tjwn.onrender.com/api";
 
 function App() {
   const [user, setUser] = useState(() => {
@@ -65,11 +65,7 @@ function App() {
 
   return (
     <div className="app-layout">
-      <Sidebar
-        page={page}
-        setPage={setPage}
-        logout={logout}
-      />
+      <Sidebar page={page} setPage={setPage} logout={logout} />
 
       <main className="main-content">
         <Header user={user} />
@@ -177,9 +173,7 @@ function AuthPage({ onLogin }) {
   return (
     <div className="auth-page">
       <div className="auth-card">
-        <div className="auth-logo">
-          ✓
-        </div>
+        <div className="auth-logo">✓</div>
 
         <h1>SmartSubmit</h1>
 
@@ -250,8 +244,8 @@ function AuthPage({ onLogin }) {
             {loading
               ? "Please wait..."
               : mode === "login"
-                ? "Login"
-                : "Create Account"}
+              ? "Login"
+              : "Create Account"}
           </button>
         </form>
 
@@ -460,9 +454,7 @@ function Dashboard({
           </div>
 
           {submissions.length === 0 ? (
-            <EmptyState
-              text="No submissions yet."
-            />
+            <EmptyState text="No submissions yet." />
           ) : (
             submissions.slice(0, 5).map((submission) => (
               <SubmissionRow
